@@ -10,7 +10,7 @@ export default function SignUp() {
   return (
     <div>
       <form>
-        <h3>Sign up</h3>
+        <h2>Sign up</h2>
         <input type="text" placeholder="Display username" />
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />

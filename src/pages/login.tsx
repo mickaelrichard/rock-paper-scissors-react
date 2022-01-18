@@ -10,7 +10,7 @@ export default function Login() {
   return (
     <div>
       <form>
-        <h3>Login</h3>
+        <h2>Login</h2>
         <input type="text" placeholder="Display username" />
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
