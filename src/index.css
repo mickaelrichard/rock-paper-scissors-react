@@ -7,8 +7,8 @@
   --secondary: #ebebeb;
   --warning: #da0f41;
   --transition: all 0.3s linear;
-  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --light-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
 /* base styles  */
@@ -96,7 +96,7 @@ input {
   padding: 1.6rem 1.2rem;
   margin-bottom: 6rem;
   background: white;
-  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
 }
 nav {
   display: flex;
@@ -151,17 +151,63 @@ nav .links span {
   background-color: rgba(227, 16, 16);
 }
 
-.leaderBoard-container {
-  background-color: blue;
-  color: var(--secondary);
-  width: 12rem;
-  padding: 6rem;
-}
-
 /* game */
 .game-container {
   max-width: 120rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+/* leadeboard */
+.leaderBoard-container {
+  background-color: blue;
+  color: var(--secondary);
+  width: 50rem;
+  padding: 6rem;
+  margin-bottom: 10rem;
+}
+
+/* play */
+.play-container {
+  background-color: blue;
+  color: var(--secondary);
+  width: 80rem;
+  padding: 8rem;
+  margin-bottom: 6rem;
+}
+
+/* pick */
+.pick-container {
+  background-color: blue;
+  color: var(--secondary);
+  width: 80rem;
+  padding: 8rem;
+}
+
+.pick {
+  display: flex;
+}
+
+.pick-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 16rem;
+  width: 16rem;
+  border: 1rem solid #4d4c46;
+  border-radius: 50%;
+  margin-left: 0.8rem;
+  cursor: pointer;
+}
+.pick-icon img {
+  width: 7rem;
+}
+.items {
+  display: flex;
+  justify-content: center;
+}
+
+/* /play */
+.play-player-hand {
+  transform: rotateY(180deg);
 }

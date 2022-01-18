@@ -49,7 +49,7 @@ const Game = () => {
   return (
     <div className="game-container">
       <LeaderBoard />
-      <div>
+      {/* <div>
         <button onClick={handleSubmit}>test</button>
         <p>{rounds}</p>
         <div
@@ -72,10 +72,10 @@ const Game = () => {
         <p>playerScore:{playerScore}</p>
         <p>userWin:{userWin}</p>
         <p>playerChoice: {playerChoice}</p>
-      </div>
+      </div> */}
 
-      <Pick />
       <Play />
+      <Pick />
     </div>
   );
 };
