@@ -1,6 +1,11 @@
-import { useEffect, useRef, useContext } from "react";
+import { useEffect, useRef, useContext, useState } from "react";
 import { GameContext } from "../context/game";
+
 const Play = () => {
+  const [anim, setAnim] = useState(false);
+  const [uiPlayerHand, setUiPlayerHand] = useState<string | null>("rock");
+  const [uiComputerHand, setUiComputerHand] = useState<string | null>("rock");
+
   const firstUpdate = useRef(true);
   const {
     rounds,
@@ -40,18 +45,35 @@ const Play = () => {
       firstUpdate.current = false;
       return;
     }
-
-    result();
+    setAnim(true);
+    setTimeout(() => {
+      result();
+      setAnim(false);
+      setUiComputerHand(computer);
+      setUiPlayerHand(playerChoice);
+    }, 1700);
   }, [rounds]);
+
+  const classNames = [];
+  if (anim) {
+    classNames.push("shakeP", "play-player-hand");
+  } else {
+    classNames.push("play-player-hand");
+  }
 
   return (
     <div>
       <div>
         <img
-          className="play-player-hand"
-          src={playerChoice ? `./${playerChoice}.png` : `./rock.png`}
+          // "play-player-hand"
+          // className={anim ? "shakeP" : ""}
+          className={classNames.join(" ")}
+          src={playerChoice ? `./${uiPlayerHand}.png` : `./rock.png`}
         />
-        <img src={computer ? `./${computer}.png` : `./rock.png`} />
+        <img
+          src={computer ? `./${uiComputerHand}.png` : `./rock.png`}
+          className={anim ? "shakeC" : ""}
+        />
       </div>
       {/* <p>playerChoice: {playerChoice}</p>
       <p>computer:{computer}</p>
