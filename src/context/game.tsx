@@ -1,21 +1,11 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
-//to export
-interface Game {
-  computer: string | null;
-  userWin: string | null;
-  rounds: number;
-  playerChoice: string;
-  playerScore: number;
-  computerScore: number;
-  submitChoice(event: React.ChangeEvent<any>): void;
-  getResults(result: string, score: number): void;
-}
+import { IGame } from "./interface";
 
-const GameContext = createContext<Game>({
+const GameContext = createContext<IGame>({
   computer: "",
   userWin: "",
-  rounds: 3,
+  rounds: 0,
   playerChoice: "",
   playerScore: 0,
   computerScore: 0,
@@ -24,12 +14,12 @@ const GameContext = createContext<Game>({
 });
 
 const GameProvider = ({ children }: any) => {
-  const [computer, setComputer] = useState<Game["computer"]>("");
-  const [userWin, setUserWin] = useState<Game["userWin"]>("");
-  const [rounds, setRounds] = useState<Game["rounds"]>(3);
-  const [playerChoice, setPlayerChoice] = useState<Game["playerChoice"]>("");
-  const [playerScore, setPlayerScore] = useState<Game["playerScore"]>(0);
-  const [computerScore, setComputerScore] = useState<Game["computerScore"]>(0);
+  const [computer, setComputer] = useState<IGame["computer"]>("");
+  const [userWin, setUserWin] = useState<IGame["userWin"]>("");
+  const [rounds, setRounds] = useState<IGame["rounds"]>(0);
+  const [playerChoice, setPlayerChoice] = useState<IGame["playerChoice"]>("");
+  const [playerScore, setPlayerScore] = useState<IGame["playerScore"]>(0);
+  const [computerScore, setComputerScore] = useState<IGame["computerScore"]>(0);
 
   function getResults(result: string, score: number) {
     setUserWin(result);
@@ -39,6 +29,7 @@ const GameProvider = ({ children }: any) => {
       setComputerScore((s) => s + score);
     }
   }
+
   const fetchComputer = () => {
     axios.get("http://localhost:5000/").then((res) => {
       setComputer(res.data.data.computer);
@@ -47,7 +38,6 @@ const GameProvider = ({ children }: any) => {
   };
 
   const submitChoice = (event: React.ChangeEvent<any>) => {
-    console.log("choice");
     setPlayerChoice(event.target.dataset.id);
     fetchComputer();
   };

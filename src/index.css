@@ -3,7 +3,7 @@
 
 /* variables */
 :root {
-  --primary: #4f515a;
+  --primary: #210d3b;
   --secondary: #ebebeb;
   --warning: #da0f41;
   --transition: all 0.3s linear;
@@ -137,18 +137,18 @@ nav .links span {
   align-items: center;
   justify-content: center;
   box-shadow: var(--dark-shadow);
+  margin-top: 10rem;
 }
 
 .play-btn {
   padding: 1.5rem;
   font-size: 6rem;
-  background-color: rgba(227, 16, 16);
+  background-color: var(--primary);
   border-radius: 2rem;
   cursor: pointer;
 }
 .play-btn:hover {
   transform: scale(1.1);
-  background-color: rgba(227, 16, 16);
 }
 
 /* game */

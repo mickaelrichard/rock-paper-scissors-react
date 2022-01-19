@@ -3,7 +3,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <nav>
-        <h1>Rock Paper Scissors</h1>
+        <h1>ROCK PAPER SCISSORS</h1>
         <div className="links">
           {/* <Link to="/game">Game</Link>
           <span>Hi there username</span> */}

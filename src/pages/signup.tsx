@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function SignUp() {
   // const [username, setUsername] = useState("");
   // const [emailAddress, setEmailAddress] = useState("");

@@ -2,19 +2,17 @@ import { useContext } from "react";
 import { GameContext } from "../context/game";
 
 const LeaderBoard = () => {
-  const {
-    playerScore,
+  const { playerScore, computerScore } = useContext(GameContext);
 
-    computerScore,
-  } = useContext(GameContext);
   return (
     <div className="leaderBoard-container">
       <div>
-        {/* <i className="fas fa-medal"></i>{" "} */}
+        {playerScore > computerScore && <i className="fas fa-medal"></i>}
         <span className="leaderBoard">username</span>
         <div className="leaderBoard-score">{playerScore}</div>
       </div>
       <div>
+        {playerScore < computerScore && <i className="fas fa-medal"></i>}
         <span className="leaderBoard">computer</span>
         <div className="leaderBoard-score">{computerScore}</div>
       </div>
