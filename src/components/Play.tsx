@@ -1,28 +1,17 @@
 import { useEffect, useRef, useContext, useState } from "react";
 import { GameContext } from "../context/game";
-
-const Play = () => {
-  const [anim, setAnim] = useState(false);
+interface IProps {
+  setAnim: React.Dispatch<React.SetStateAction<boolean>>;
+  anim: boolean;
+}
+const Play: React.FC<IProps> = ({ anim, setAnim }) => {
   const [uiPlayerHand, setUiPlayerHand] = useState<string | null>("rock");
   const [uiComputerHand, setUiComputerHand] = useState<string | null>("rock");
+  const firstUpdate = useRef<boolean>(true);
+  const { rounds, playerChoice, getResults, computer } = useContext(
+    GameContext
+  );
 
-  const firstUpdate = useRef(true);
-  const {
-    rounds,
-    playerScore,
-    userWin,
-    submitChoice,
-    playerChoice,
-    getResults,
-    computerScore,
-    computer,
-  } = useContext(GameContext);
-  useEffect(() => {}, []);
-  // const fetchComputer = () => {
-  //   axios
-  //     .get("http://localhost:5000/")
-  //     .then((res) => setComputer(res.data.data.computer));
-  // };
   const result = () => {
     if (playerChoice === "rock" && computer === "scissors") {
       getResults("win", 1);
@@ -40,6 +29,7 @@ const Play = () => {
       getResults("draw", 0);
     }
   };
+
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
@@ -65,8 +55,6 @@ const Play = () => {
     <div>
       <div>
         <img
-          // "play-player-hand"
-          // className={anim ? "shakeP" : ""}
           className={classNames.join(" ")}
           src={playerChoice ? `./${uiPlayerHand}.png` : `./rock.png`}
         />
@@ -75,12 +63,6 @@ const Play = () => {
           className={anim ? "shakeC" : ""}
         />
       </div>
-      {/* <p>playerChoice: {playerChoice}</p>
-      <p>computer:{computer}</p>
-      <p>rounds:{rounds}</p>
-      <p>playerScore:{playerScore}</p>
-      <p>computerScore:{computerScore}</p>
-      <p>userWin:{userWin}</p> */}
     </div>
   );
 };
