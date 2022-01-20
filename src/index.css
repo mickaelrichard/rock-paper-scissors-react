@@ -125,6 +125,10 @@ nav .links span {
   padding-left: 1.6rem;
   border-left: 1.1rem solid #eee;
 }
+.nav-title {
+  font-size: 3rem;
+  font-weight: 800;
+}
 
 /* landing */
 .hero {
@@ -146,7 +150,10 @@ nav .links span {
   background-color: var(--primary);
   border-radius: 2rem;
   cursor: pointer;
+  border: white solid 0.2rem;
+  box-shadow: 0 0.2rem 0.2rem rgb(51, 50, 50);
 }
+
 .play-btn:hover {
   transform: scale(1.1);
 }
@@ -169,11 +176,12 @@ nav .links span {
   border: solid 1px var(--primary);
   border-radius: 2rem;
 }
-.leaderBoard {
+.leaderBoard-title {
   border-bottom: 2px solid var(--primary);
   font-weight: 800;
   font-size: 2.4rem;
   text-transform: uppercase;
+  margin-left: 0.6rem;
 }
 .leaderBoard-score {
   text-align: center;
