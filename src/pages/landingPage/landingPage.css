@@ -1,0 +1,26 @@
+.landing-hero {
+  padding: 8rem 0;
+  height: 60vh;
+  background-image: url("https://miro.medium.com/max/800/1*8du96SQUQ0NlWmWvVu20Zw.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--dark-shadow);
+  margin-top: 10rem;
+}
+
+.landing-btn {
+  padding: 1.5rem;
+  font-size: 6rem;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  cursor: pointer;
+  border: white solid 0.2rem;
+  box-shadow: 0 0.2rem 0.2rem rgb(51, 50, 50);
+}
+
+.landing-btn:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,37 @@
+.navbar {
+  padding: 1.6rem 1.2rem;
+  margin-bottom: 6rem;
+  background: white;
+  box-shadow: 0px 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+}
+nav {
+  display: flex;
+  align-items: center;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+nav h1 {
+  margin-left: 2rem;
+  font-size: 3rem;
+}
+nav .navbar-links {
+  margin-left: auto;
+}
+nav .navbar-links .btn,
+nav .navbar-links button {
+  margin-left: 1.6rem;
+  font-size: 1.8rem;
+}
+
+nav .navbar-links span {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1.6rem;
+  padding-left: 1.6rem;
+  border-left: 1.1rem solid #eee;
+}
+.navbar-title {
+  font-size: 3rem;
+  font-weight: 800;
+}

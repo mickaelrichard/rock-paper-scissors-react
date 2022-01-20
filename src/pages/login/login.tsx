@@ -1,37 +1,30 @@
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/auth";
+import { UserContext } from "../../context/auth";
+import axios from "axios";
 
-export default function SignUp() {
-  const [username, setUsername] = useState<string>("");
+export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const [state, setState] = useContext(UserContext);
   const navigate = useNavigate();
 
-  const isInvalid = password === "" || email === "" || password === "";
-  const registerHandler = async (e: any) => {
+  const isInvalid = email === "" || password === "";
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
+
+  const loginHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    if (password !== confirmPassword) {
-      setPassword("");
-      setConfirmPassword("");
-      setTimeout(() => {
-        setError("");
-      }, 5000);
-      setLoading(false);
-      return setError("Passwords do not match");
-    }
 
     try {
       const { data: response } = await axios.post(
-        "http://localhost:8080/api/v1/auth/signup",
+        "http://localhost:8080/api/v1/auth/login",
         {
-          username,
           email,
           password,
         }
@@ -48,6 +41,7 @@ export default function SignUp() {
       });
 
       localStorage.setItem("token", response.data.token);
+
       axios.defaults.headers.common[
         "authorization"
       ] = `Bearer ${response.data.token}`;
@@ -59,7 +53,7 @@ export default function SignUp() {
         setError("");
       }, 5000);
       setError(error.response.data.errors[0].msg);
-      setConfirmPassword("");
+
       setLoading(false);
     }
   };
@@ -67,13 +61,8 @@ export default function SignUp() {
   return (
     <div>
       <form>
-        <h2>Sign up</h2>
-        <input
-          type="text"
-          placeholder="Display username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <h2>Login</h2>
+
         <input
           type="email"
           placeholder="Email"
@@ -86,15 +75,10 @@ export default function SignUp() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+
         <div className="error"> {error}</div>
-        <button disabled={loading || isInvalid} onClick={registerHandler}>
-          Sign up
+        <button disabled={loading || isInvalid} onClick={loginHandler}>
+          Login
         </button>
       </form>
     </div>

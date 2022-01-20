@@ -1,0 +1,27 @@
+.pick-disabled {
+  pointer-events: none;
+}
+.pick {
+  display: flex;
+}
+
+.pick-items {
+  display: flex;
+  justify-content: center;
+}
+.pick-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+  width: 20rem;
+  margin-left: 0.8rem;
+}
+.pick-icon img {
+  width: 10rem;
+  padding: rem;
+}
+.pick-icon img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}

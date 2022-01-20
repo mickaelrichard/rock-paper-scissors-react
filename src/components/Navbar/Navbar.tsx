@@ -1,23 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../context/auth";
+import { UserContext } from "../../context/auth";
+import { GameContext } from "../../context/game";
+import "./navbar.css";
 const Navbar = () => {
   const [state, setState] = useContext(UserContext);
+  const { resetGameStorage } = useContext(GameContext);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setState({ data: null, loading: false, error: null });
     localStorage.removeItem("token");
+    resetGameStorage();
     navigate("/");
   };
   return (
     <div className="navbar">
       <nav>
-        <Link to="/" className="nav-title">
+        <Link to="/" className="navbar-title">
           ROCK PAPER SCISSORS
         </Link>
-        <div className="links">
+        <div className="navbar-links">
           {state.data ? (
             <>
               <button onClick={handleLogout} className="btn">

@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { IGame } from "./interface";
+import { IGame } from "./interfaces";
 
 const GameContext = createContext<IGame>({
   computer: "",
@@ -10,6 +10,7 @@ const GameContext = createContext<IGame>({
   playerScore: 0,
   computerScore: 0,
   submitChoice() {},
+  resetGameStorage() {},
   getResults(result: string, score: number) {},
 });
 
@@ -30,14 +31,30 @@ const GameProvider = ({ children }: any) => {
     }
   }
 
+  useEffect(() => {
+    const computerStorage: any = localStorage.getItem("computerScore");
+    const playerStorage: any = localStorage.getItem("playerScore");
+    if (computerStorage || playerStorage) {
+      setComputerScore(parseInt(computerStorage));
+      setPlayerScore(parseInt(playerStorage));
+    }
+  }, []);
+
+  const resetGameStorage = () => {
+    localStorage.removeItem("playerScore");
+    localStorage.removeItem("computerScore");
+    setComputerScore(0);
+    setPlayerScore(0);
+  };
   const fetchComputer = () => {
     axios.get("http://localhost:5000/").then((res) => {
       setComputer(res.data.data.computer);
-      setRounds((r) => r + 1);
+      setRounds((r: number) => r + 1);
     });
   };
 
   const submitChoice = (event: React.ChangeEvent<any>) => {
+    //maybe wrong type?
     setPlayerChoice(event.target.dataset.id);
     fetchComputer();
   };
@@ -53,6 +70,7 @@ const GameProvider = ({ children }: any) => {
         playerScore,
         getResults,
         computerScore,
+        resetGameStorage,
       }}
     >
       {children}

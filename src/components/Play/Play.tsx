@@ -1,5 +1,7 @@
 import { useEffect, useRef, useContext, useState } from "react";
-import { GameContext } from "../context/game";
+import { GameContext } from "../../context/game";
+import "./play.css";
+
 interface IProps {
   setAnim: React.Dispatch<React.SetStateAction<boolean>>;
   anim: boolean;

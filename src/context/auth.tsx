@@ -1,22 +1,16 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useContext } from "react";
 import axios from "axios";
-
-interface User {
-  data: {
-    id: string;
-    email: string;
-    username: string;
-  } | null;
-  error: string | null;
-  loading: boolean;
-}
+import { IUser } from "./interfaces";
+import { GameContext } from "./game";
 
 const UserContext = createContext<
-  [User, React.Dispatch<React.SetStateAction<User>>]
+  [IUser, React.Dispatch<React.SetStateAction<IUser>>]
 >([{ data: null, loading: true, error: null }, () => {}]);
 
 const UserProvider = ({ children }: any) => {
-  const [user, setUser] = useState<User>({
+  const { resetGameStorage } = useContext(GameContext);
+
+  const [user, setUser] = useState<IUser>({
     data: null,
     loading: true,
     error: null,
@@ -29,26 +23,35 @@ const UserProvider = ({ children }: any) => {
   }
 
   const fetchUser = async () => {
-    const { data: response } = await axios.get(
-      "http://localhost:8080/api/v1/user/me"
-    );
+    try {
+      const { data: response } = await axios.get(
+        "http://localhost:8080/api/v1/user/me"
+      );
 
-    if (response.data && response.data.user) {
-      console.log(response.data.user);
-      setUser({
-        data: {
-          id: response.data.user.id,
-          email: response.data.user.email,
-          username: response.data.user.username,
-        },
-        loading: false,
-        error: null,
-      });
-    } else if (response.data && response.data.errors.length) {
+      if (response.data && response.data.user) {
+        setUser({
+          data: {
+            id: response.data.user.id,
+            email: response.data.user.email,
+            username: response.data.user.username,
+          },
+          loading: false,
+          error: null,
+        });
+      } else if (response.data && response.data.errors.length) {
+        resetGameStorage();
+        setUser({
+          data: null,
+          loading: false,
+          error: response.errors[0].msg,
+        });
+      }
+    } catch (error: any) {
+      resetGameStorage();
       setUser({
         data: null,
         loading: false,
-        error: response.errors[0].msg,
+        error: error.response.data.errors[0].msg,
       });
     }
   };

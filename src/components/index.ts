@@ -1,5 +1,5 @@
-import LeaderBoard from "./LeaderBoard";
-import Navbar from "./Navbar";
-import Pick from "./Pick";
-import Play from "./Play";
+import LeaderBoard from "./LeaderBoard/LeaderBoard";
+import Navbar from "./Navbar/Navbar";
+import Pick from "./Pick/Pick";
+import Play from "./Play/Play";
 export { LeaderBoard, Navbar, Pick, Play };

@@ -1,10 +1,15 @@
-import { useContext } from "react";
-import { GameContext } from "../context/game";
-import { UserContext } from "../context/auth";
-
+import { useContext, useMemo } from "react";
+import { GameContext } from "../../context/game";
+import { UserContext } from "../../context/auth";
+import "./leaderBoard.css";
 const LeaderBoard = () => {
   const { playerScore, computerScore } = useContext(GameContext);
   const [state, setState] = useContext(UserContext);
+
+  useMemo(() => {
+    localStorage.setItem("playerScore", playerScore.toString());
+    localStorage.setItem("computerScore", computerScore.toString());
+  }, [playerScore, computerScore]);
 
   return (
     <div className="leaderBoard-container">
