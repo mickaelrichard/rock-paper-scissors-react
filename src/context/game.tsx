@@ -11,6 +11,7 @@ const GameContext = createContext<IGame>({
   computerScore: 0,
   submitChoice() {},
   resetGameStorage() {},
+  resetScore() {},
   getResults(result: string, score: number) {},
 });
 
@@ -46,6 +47,7 @@ const GameProvider = ({ children }: any) => {
     setComputerScore(0);
     setPlayerScore(0);
   };
+
   const fetchComputer = () => {
     axios.get("http://localhost:5000/").then((res) => {
       setComputer(res.data.data.computer);
@@ -59,6 +61,10 @@ const GameProvider = ({ children }: any) => {
     fetchComputer();
   };
 
+  const resetScore = () => {
+    setPlayerScore(0);
+    setComputerScore(0);
+  };
   return (
     <GameContext.Provider
       value={{
@@ -71,6 +77,7 @@ const GameProvider = ({ children }: any) => {
         getResults,
         computerScore,
         resetGameStorage,
+        resetScore,
       }}
     >
       {children}

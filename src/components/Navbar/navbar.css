@@ -1,6 +1,6 @@
 .navbar {
   padding: 1.6rem 1.2rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   background: white;
   box-shadow: 0px 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
 }
@@ -21,15 +21,12 @@ nav .navbar-links {
 nav .navbar-links .btn,
 nav .navbar-links button {
   margin-left: 1.6rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 nav .navbar-links span {
-  font-size: 1.4rem;
-  display: inline-block;
-  margin-left: 1.6rem;
-  padding-left: 1.6rem;
-  border-left: 1.1rem solid #eee;
+  margin-right: 1.6rem;
+  background: white;
 }
 .navbar-title {
   font-size: 3rem;

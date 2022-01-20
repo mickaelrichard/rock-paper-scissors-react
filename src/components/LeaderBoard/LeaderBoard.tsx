@@ -3,7 +3,7 @@ import { GameContext } from "../../context/game";
 import { UserContext } from "../../context/auth";
 import "./leaderBoard.css";
 const LeaderBoard = () => {
-  const { playerScore, computerScore } = useContext(GameContext);
+  const { playerScore, computerScore, resetScore } = useContext(GameContext);
   const [state, setState] = useContext(UserContext);
 
   useMemo(() => {
@@ -13,6 +13,9 @@ const LeaderBoard = () => {
 
   return (
     <div className="leaderBoard-container">
+      <div className="leaderBoard-reset" onClick={resetScore}>
+        Reset Score
+      </div>
       <div>
         {playerScore > computerScore && <i className="fas fa-medal"></i>}
         <span className="leaderBoard-title">{state?.data?.username}</span>

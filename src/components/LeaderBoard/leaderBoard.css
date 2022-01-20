@@ -1,8 +1,9 @@
 .leaderBoard-container {
+  position: relative;
   color: var(--primary);
   width: 50rem;
-  padding: 4rem;
-  margin-bottom: 10rem;
+  padding: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   border: solid 1px var(--primary);
@@ -18,4 +19,18 @@
 .leaderBoard-score {
   text-align: center;
   margin-top: 1rem;
+}
+.leaderBoard-reset {
+  padding: 2.4rem;
+  background: rgb(255, 145, 0);
+  border-radius: 40%;
+  color: white;
+  position: absolute;
+  right: -16rem;
+  top: 2rem;
+  cursor: pointer;
+  border: 0.2em solid var(--primary);
+}
+.leaderBoard-reset:hover {
+  transform: scale(1.1);
 }

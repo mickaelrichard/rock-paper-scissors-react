@@ -24,12 +24,11 @@ const Navbar = () => {
         <div className="navbar-links">
           {state.data ? (
             <>
+              <span>Hi there, {state.data.username}</span>
+
               <button onClick={handleLogout} className="btn">
                 Logout
               </button>
-              <Link to="/game" className="btn">
-                Game
-              </Link>
             </>
           ) : (
             <>

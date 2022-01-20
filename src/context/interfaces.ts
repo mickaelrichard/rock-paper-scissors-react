@@ -8,6 +8,7 @@ export interface IGame {
   submitChoice(event: React.ChangeEvent<any>): void;
   getResults(result: string, score: number): void;
   resetGameStorage(): void;
+  resetScore(): void;
 }
 
 export interface IUser {

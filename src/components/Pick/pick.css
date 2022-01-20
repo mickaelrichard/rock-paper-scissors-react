@@ -13,8 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20rem;
-  width: 20rem;
+  height: 16rem;
+  width: 16rem;
   margin-left: 0.8rem;
 }
 .pick-icon img {
