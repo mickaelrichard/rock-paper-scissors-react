@@ -12,7 +12,7 @@ export default function SignUp() {
   const [error, setError] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const setState = useContext(UserContext)[1];
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const isInvalid = password === "" || email === "" || password === "";
@@ -44,7 +44,7 @@ export default function SignUp() {
         }
       );
 
-      setState({
+      setUser({
         data: {
           id: response.data.user.id,
           email: response.data.user.email,

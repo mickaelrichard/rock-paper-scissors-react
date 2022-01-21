@@ -7,13 +7,13 @@ import "./leaderBoard.css";
 
 const LeaderBoard = () => {
   const { playerScore, computerScore, resetScore } = useContext(GameContext);
-  const state = useContext(UserContext)[0];
+  const { user } = useContext(UserContext);
 
   useMemo(() => {
     localStorage.setItem("playerScore", playerScore.toString());
     localStorage.setItem("computerScore", computerScore.toString());
   }, [playerScore, computerScore]);
-console.log("leader")
+  console.log("leader");
   return (
     <div className="leaderBoard-container">
       <motion.div
@@ -26,7 +26,7 @@ console.log("leader")
       </motion.div>
       <div>
         {playerScore > computerScore && <i className="fas fa-medal"></i>}
-        <span className="leaderBoard-title">{state?.data?.username}</span>
+        <span className="leaderBoard-title">{user?.data?.username}</span>
         <div className="leaderBoard-score">{playerScore}</div>
       </div>
       <div>

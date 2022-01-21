@@ -7,13 +7,13 @@ import { GameContext } from "../../context/game";
 import "./navbar.css";
 
 const Navbar = () => {
-  const [state, setState] = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { resetGameStorage } = useContext(GameContext);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setState({ data: null, loading: false, error: null });
+    setUser({ data: null, loading: false, error: null });
     localStorage.removeItem("token");
     resetGameStorage();
     navigate("/");
@@ -32,9 +32,9 @@ const Navbar = () => {
         </h1>
 
         <div className="navbar-links">
-          {state.data ? (
+          {user.data ? (
             <>
-              <span>Hi there, {state.data.username}</span>
+              <span>Hi there, {user.data.username}</span>
 
               <motion.button
                 onClick={handleLogout}

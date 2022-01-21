@@ -10,7 +10,7 @@ export default function Login() {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const setState = useContext(UserContext)[1];
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const isInvalid = email === "" || password === "";
@@ -19,7 +19,7 @@ export default function Login() {
     document.title = "Login";
   }, []);
 
-  const loginHandler = async (e:  React.FormEvent) => {
+  const loginHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -32,7 +32,7 @@ export default function Login() {
         }
       );
 
-      setState({
+      setUser({
         data: {
           id: response.data.user.id,
           email: response.data.user.email,

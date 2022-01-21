@@ -4,9 +4,9 @@ import { UserContext } from "../context/auth";
 import Loader from "../motion/Loader";
 
 export const UnProtectedRoute = () => {
-  const [state] = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-  if (state.loading) return <Loader />;
+  if (user.loading) return <Loader />;
 
-  return !state.data ? <Outlet /> : <Navigate to="/game" />;
+  return !user.data ? <Outlet /> : <Navigate to="/game" />;
 };

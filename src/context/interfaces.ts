@@ -11,12 +11,16 @@ export interface IGame {
   resetScore(): void;
 }
 
-export interface IUser {
-  data: {
-    id: string;
-    email: string;
-    username: string;
-  } | null;
-  error: string | null;
-  loading: boolean;
+export interface IAuth {
+  user: {
+    data: {
+      id: string;
+      email: string;
+      username: string;
+    } | null;
+    error: string | null;
+    loading: boolean;
+  };
+  setUser: React.Dispatch<React.SetStateAction<IAuth["user"]>>;
+  test(): void;
 }

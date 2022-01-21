@@ -1,16 +1,18 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { IUser } from "./interfaces";
+import { IAuth } from "./interfaces";
 import { GameContext } from "./game";
 
-const UserContext = createContext<
-  [IUser, React.Dispatch<React.SetStateAction<IUser>>]
->([{ data: null, loading: true, error: null }, () => {}]);
+const UserContext = createContext<IAuth>({
+  user: { data: null, loading: true, error: null },
+  setUser: () => {},
+  test: () => {},
+});
 
 const UserProvider = ({ children }: any) => {
   const { resetGameStorage } = useContext(GameContext);
 
-  const [user, setUser] = useState<IUser>({
+  const [user, setUser] = useState<IAuth["user"]>({
     data: null,
     loading: true,
     error: null,
@@ -68,10 +70,17 @@ const UserProvider = ({ children }: any) => {
     }
   }, []);
 
+  const test = () => {
+    console.log("test");
+  };
+
+  const contextValue: IAuth = {
+    user,
+    setUser,
+    test,
+  };
   return (
-    <UserContext.Provider value={[user, setUser]}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
   );
 };
 
