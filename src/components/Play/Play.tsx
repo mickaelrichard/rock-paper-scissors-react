@@ -55,7 +55,7 @@ const Play: React.FC<IProps> = ({ anim, setAnim }) => {
 
   return (
     <div>
-      <div>
+      <div className="play-hands">
         <img
           className={classNames.join(" ")}
           src={playerChoice ? `./${uiPlayerHand}-b.png` : `./rock-b.png`}

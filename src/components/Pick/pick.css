@@ -19,10 +19,16 @@
 }
 .pick-icon img {
   width: 10rem;
-  padding: rem;
   cursor: pointer;
 }
-/* .pick-icon img:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-} */
+@media (max-width: 768px) {
+  .pick-icon img {
+    width: 8rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 980px) {
+  .pick-items {
+    margin-top: -3rem;
+  }
+}

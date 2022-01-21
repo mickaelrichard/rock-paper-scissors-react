@@ -34,3 +34,32 @@
 .leaderBoard-reset:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+  .leaderBoard-container {
+    width: 40rem;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  .leaderBoard-title {
+    font-size: 2rem;
+  }
+  .leaderBoard-reset {
+    padding: 1rem 1.5rem;
+    border-radius: 30%;
+    right: 15rem;
+    top: 12rem;
+    border: 0.1em solid var(--primary);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 980px) {
+  .leaderBoard-reset {
+    padding: 1.4rem 1.5rem;
+    color: white;
+    position: absolute;
+    right: 17.5rem;
+    top: 14rem;
+    cursor: pointer;
+    border: 0.15em solid var(--primary);
+  }
+}

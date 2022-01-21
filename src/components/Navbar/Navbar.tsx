@@ -27,9 +27,10 @@ const Navbar = () => {
       animate="visible"
     >
       <nav>
-        <Link to="/" className="navbar-title">
-          ROCK PAPER SCISSORS
-        </Link>
+        <h1 className="navbar-title">
+          <Link to="/">ROCK PAPER SCISSORS </Link>
+        </h1>
+
         <div className="navbar-links">
           {state.data ? (
             <>

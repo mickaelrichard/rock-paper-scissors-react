@@ -1,7 +1,26 @@
 .play-player-hand {
   transform: rotateY(180deg);
 }
-
+@media (max-width: 768px) {
+  .play-hands {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .play-hands img {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 980px) {
+  .play-hands {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .play-hands img {
+    width: 60%;
+  }
+}
 @keyframes shakePlayer {
   0% {
     transform: rotateY(180deg) translateY(0px);

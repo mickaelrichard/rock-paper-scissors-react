@@ -1,6 +1,5 @@
 .navbar {
   padding: 1.6rem 1.2rem;
-  margin-bottom: 4rem;
   background: white;
   box-shadow: 0px 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
 }
@@ -8,22 +7,17 @@ nav {
   display: flex;
   align-items: center;
   max-width: 120rem;
-  margin: 0 auto;
+  margin: 0rem auto;
+  padding-top: 0.5rem;
 }
-
-nav h1 {
+nav .navbar-links div .btn {
   margin-left: 2rem;
-  font-size: 3rem;
+  font-size: 1.8rem;
 }
 nav .navbar-links {
   margin-left: auto;
   display: flex;
   align-items: center;
-}
-
-nav .navbar-links div .btn {
-  margin-left: 1.6rem;
-  font-size: 2rem;
 }
 
 nav .navbar-links span {
@@ -33,4 +27,36 @@ nav .navbar-links span {
 .navbar-title {
   font-size: 3rem;
   font-weight: 800;
+}
+@media (max-width: 980px) {
+  .navbar-title {
+    font-size: 2.3rem;
+  }
+  /* nav .navbar-links span {
+    visibility: hidden;
+  } */
+  nav .navbar-links div .btn {
+    margin-left: 1rem;
+    font-size: 1.8rem;
+  }
+  nav .navbar-links {
+    margin-right: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    max-width: 50rem;
+  }
+  .navbar-title {
+    font-size: 1.8rem;
+  }
+  nav .navbar-links span {
+    visibility: hidden;
+  }
+  nav .navbar-links div .btn {
+    font-size: 1.6rem;
+  }
+  nav .navbar-links {
+    margin-right: 1.8rem;
+  }
 }

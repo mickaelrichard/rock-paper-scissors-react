@@ -116,3 +116,24 @@ input {
 .not-found-countainer Link {
   margin-bottom: 2rem;
 }
+
+@media (max-width: 76,8rem) {
+  body,
+  p,
+  span {
+    font-size: 1.4rem;
+  }
+  .content {
+    margin: 0 auto;
+    max-width: 50rem;
+    padding: 0 2rem;
+  }
+  button,
+  .btn {
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.4rem;
+  }
+}
