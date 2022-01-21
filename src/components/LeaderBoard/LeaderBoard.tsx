@@ -13,7 +13,7 @@ const LeaderBoard = () => {
     localStorage.setItem("playerScore", playerScore.toString());
     localStorage.setItem("computerScore", computerScore.toString());
   }, [playerScore, computerScore]);
-
+console.log("leader")
   return (
     <div className="leaderBoard-container">
       <motion.div

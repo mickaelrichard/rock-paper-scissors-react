@@ -67,8 +67,8 @@ const leaderBoardButtonVariants = {
   hover: {
     scale: 1.1,
     transition: {
-      duration: 0.3,
-      yoyo: Infinity,
+      duration: 0.5,
+      repeat: Infinity,
     },
   },
 };

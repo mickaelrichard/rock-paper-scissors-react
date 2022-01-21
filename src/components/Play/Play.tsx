@@ -38,12 +38,15 @@ const Play: React.FC<IProps> = ({ anim, setAnim }) => {
       return;
     }
     setAnim(true);
-    setTimeout(() => {
+    const cleanup = setTimeout(() => {
       result();
       setAnim(false);
       setUiComputerHand(computer);
       setUiPlayerHand(playerChoice);
     }, 1700);
+    return () => {
+      clearTimeout(cleanup);
+    };
   }, [rounds]);
 
   const classNames = [];
@@ -52,15 +55,17 @@ const Play: React.FC<IProps> = ({ anim, setAnim }) => {
   } else {
     classNames.push("play-player-hand");
   }
-
+  console.log("play");
   return (
     <div>
       <div className="play-hands">
         <img
+          alt="hand"
           className={classNames.join(" ")}
           src={playerChoice ? `./${uiPlayerHand}-b.png` : `./rock-b.png`}
         />
         <img
+          alt="hand"
           src={computer ? `./${uiComputerHand}.png` : `./rock.png`}
           className={anim ? "shakeC" : ""}
         />

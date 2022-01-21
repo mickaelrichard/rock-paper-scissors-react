@@ -21,7 +21,7 @@ export default function SignUp() {
     document.title = "Signup";
   }, []);
 
-  const registerHandler = async (e: any) => {
+  const registerHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     if (password !== confirmPassword) {

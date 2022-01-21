@@ -11,7 +11,7 @@ const images = ["rock", "paper", "scissors"];
 
 const Pick: React.FC<IProps> = ({ anim }) => {
   const { submitChoice } = useContext(GameContext);
-
+  console.log("pick");
   return (
     <div className="pick">
       <div className="pick-items">

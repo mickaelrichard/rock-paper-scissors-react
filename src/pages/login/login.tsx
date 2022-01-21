@@ -19,7 +19,7 @@ export default function Login() {
     document.title = "Login";
   }, []);
 
-  const loginHandler = async (e: any) => {
+  const loginHandler = async (e:  React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 

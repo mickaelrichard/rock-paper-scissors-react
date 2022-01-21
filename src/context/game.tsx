@@ -65,23 +65,22 @@ const GameProvider = ({ children }: any) => {
     setPlayerScore(0);
     setComputerScore(0);
   };
+
+  const contextValue: IGame = {
+    computer,
+    userWin,
+    rounds,
+    submitChoice,
+    playerChoice,
+    playerScore,
+    getResults,
+    computerScore,
+    resetGameStorage,
+    resetScore,
+  };
+
   return (
-    <GameContext.Provider
-      value={{
-        computer,
-        userWin,
-        rounds,
-        submitChoice,
-        playerChoice,
-        playerScore,
-        getResults,
-        computerScore,
-        resetGameStorage,
-        resetScore,
-      }}
-    >
-      {children}
-    </GameContext.Provider>
+    <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>
   );
 };
 
