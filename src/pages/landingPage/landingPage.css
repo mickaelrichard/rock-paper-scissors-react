@@ -19,6 +19,7 @@
   cursor: pointer;
   border: white solid 0.2rem;
   box-shadow: 0 0.2rem 0.2rem rgb(51, 50, 50);
+  color: white;
 }
 
 .landing-btn:hover {

@@ -17,9 +17,11 @@ nav h1 {
 }
 nav .navbar-links {
   margin-left: auto;
+  display: flex;
+  align-items: center;
 }
-nav .navbar-links .btn,
-nav .navbar-links button {
+
+nav .navbar-links div .btn {
   margin-left: 1.6rem;
   font-size: 2rem;
 }

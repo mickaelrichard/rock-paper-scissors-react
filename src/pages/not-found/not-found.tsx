@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import AnimatedPage from "../../motion/animate-page";
 
 const NotFound = () => {
   return (
-    <div>
-      <img src={"/not-found.svg"} alt="not found" />
-      <h3>Ohh! page not found</h3>
-      <p style={{ marginBottom: "1rem" }}>
-        We can't seem to find the page you're looking for
-      </p>
-      <Link to="/" className="btn">
-        back home
-      </Link>
-    </div>
+    <AnimatedPage>
+      <div className="not-found-countainer">
+        <div>
+          <img
+            src={"/not-found.svg"}
+            alt="not found"
+            className="not-found-image"
+          />
+          <h3>Ohh! page not found</h3>
+          <p>We can't seem to find the page you're looking for</p>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 1000 }}
+          >
+            <Link className="btn" to="/">
+              back home
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    </AnimatedPage>
   );
 };
 

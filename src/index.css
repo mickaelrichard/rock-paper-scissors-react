@@ -57,8 +57,7 @@ button,
 button:hover,
 .btn:hover {
   background: var(--primary);
-  color: white;
-  transform: scale(1.05);
+  color: var(--secondary);
 }
 
 button:disabled {
@@ -85,4 +84,35 @@ input {
   width: 100%;
   margin: 2rem auto;
   font-size: 1.4rem;
+}
+
+.loader-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.loader {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  border: 0.5rem solid (var(--secondary));
+  border-top: 0.5rem solid var(--primary);
+  border-radius: 50%;
+  margin-top: 10rem;
+}
+.not-found-countainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-found-image {
+  width: 60rem;
+  margin-bottom: 2rem;
+}
+.not-found-countainer h3,
+.not-found-countainer p,
+.not-found-countainer Link {
+  margin-bottom: 2rem;
 }

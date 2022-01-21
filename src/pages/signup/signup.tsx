@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import axios from "axios";
+import AnimatedPage from "../../motion/animate-page";
 import { UserContext } from "../../context/auth";
 
 export default function SignUp() {
@@ -10,7 +12,7 @@ export default function SignUp() {
   const [error, setError] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [state, setState] = useContext(UserContext);
+  const setState = useContext(UserContext)[1];
   const navigate = useNavigate();
 
   const isInvalid = password === "" || email === "" || password === "";
@@ -63,6 +65,7 @@ export default function SignUp() {
       setTimeout(() => {
         setError("");
       }, 5000);
+
       setError(error.response.data.errors[0].msg);
       setConfirmPassword("");
       setLoading(false);
@@ -70,7 +73,7 @@ export default function SignUp() {
   };
 
   return (
-    <div>
+    <AnimatedPage>
       <form>
         <h2>Sign up</h2>
         <input
@@ -98,10 +101,15 @@ export default function SignUp() {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <div className="error"> {error}</div>
-        <button disabled={loading || isInvalid} onClick={registerHandler}>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 1000 }}
+          disabled={loading || isInvalid}
+          onClick={registerHandler}
+        >
           Sign up
-        </button>
+        </motion.button>
       </form>
-    </div>
+    </AnimatedPage>
   );
 }

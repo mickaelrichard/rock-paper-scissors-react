@@ -20,8 +20,9 @@
 .pick-icon img {
   width: 10rem;
   padding: rem;
-}
-.pick-icon img:hover {
-  transform: scale(1.05);
   cursor: pointer;
 }
+/* .pick-icon img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+} */

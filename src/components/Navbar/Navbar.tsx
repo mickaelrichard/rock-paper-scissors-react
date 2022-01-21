@@ -1,8 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useContext } from "react";
+import { navVariants, hoverVariants } from "../../motion/variants";
 import { UserContext } from "../../context/auth";
 import { GameContext } from "../../context/game";
 import "./navbar.css";
+
 const Navbar = () => {
   const [state, setState] = useContext(UserContext);
   const { resetGameStorage } = useContext(GameContext);
@@ -15,8 +18,14 @@ const Navbar = () => {
     resetGameStorage();
     navigate("/");
   };
+
   return (
-    <div className="navbar">
+    <motion.div
+      className="navbar"
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <nav>
         <Link to="/" className="navbar-title">
           ROCK PAPER SCISSORS
@@ -26,23 +35,32 @@ const Navbar = () => {
             <>
               <span>Hi there, {state.data.username}</span>
 
-              <button onClick={handleLogout} className="btn">
+              <motion.button
+                onClick={handleLogout}
+                className="btn"
+                variants={hoverVariants}
+                whileHover="hover"
+              >
                 Logout
-              </button>
+              </motion.button>
             </>
           ) : (
             <>
-              <Link to="/signup" className="btn">
-                Signup
-              </Link>
-              <Link to="/login" className="btn">
-                Login
-              </Link>
+              <motion.div variants={hoverVariants} whileHover="hover">
+                <Link className="btn" to="/signup">
+                  Signup
+                </Link>
+              </motion.div>
+              <motion.div variants={hoverVariants} whileHover="hover">
+                <Link className="btn" to="/login">
+                  Login
+                </Link>
+              </motion.div>
             </>
           )}
         </div>
       </nav>
-    </div>
+    </motion.div>
   );
 };
 

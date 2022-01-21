@@ -1,22 +1,34 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useEffect } from "react";
+import AnimatedPage from "../../motion/animate-page";
+import { landingVariants } from "../../motion/variants";
 import "./landingPage.css";
+
 const LandingPage = () => {
   useEffect(() => {
     document.title = "Home";
   }, []);
+
   return (
-    <>
+    <AnimatedPage>
       <header className="landing-hero">
         <div className="header-container">
-          <button className="landing-btn">
+          <motion.button
+            className="landing-btn"
+            variants={landingVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            whileHover="hover"
+          >
             <Link style={{ color: "white" }} to="/login">
               Play
             </Link>
-          </button>
+          </motion.button>
         </div>
       </header>
-    </>
+    </AnimatedPage>
   );
 };
 

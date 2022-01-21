@@ -9,10 +9,10 @@ interface IProps {
 const Play: React.FC<IProps> = ({ anim, setAnim }) => {
   const [uiPlayerHand, setUiPlayerHand] = useState<string | null>("rock");
   const [uiComputerHand, setUiComputerHand] = useState<string | null>("rock");
-  const firstUpdate = useRef<boolean>(true);
   const { rounds, playerChoice, getResults, computer } = useContext(
     GameContext
   );
+  const firstUpdate = useRef<boolean>(true);
 
   const result = () => {
     if (playerChoice === "rock" && computer === "scissors") {
