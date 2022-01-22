@@ -8,6 +8,9 @@ import "./landingPage.css";
 const LandingPage = () => {
   useEffect(() => {
     document.title = "Home";
+    return () => {
+      document.title = "";
+    };
   }, []);
 
   return (

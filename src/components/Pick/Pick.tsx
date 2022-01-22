@@ -7,7 +7,7 @@ interface IProps {
   anim: boolean;
 }
 
-const images = ["rock", "paper", "scissors"];
+const images: string[] = ["rock", "paper", "scissors"];
 
 const Pick: React.FC<IProps> = ({ anim }) => {
   const { submitChoice } = useContext(GameContext);

@@ -11,6 +11,9 @@ const Game = () => {
 
   useEffect(() => {
     document.title = "Game";
+    return () => {
+      document.title = "";
+    };
   }, []);
 
   return (

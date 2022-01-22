@@ -101,21 +101,6 @@ input {
   border-radius: 50%;
   margin-top: 10rem;
 }
-.not-found-countainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.not-found-image {
-  width: 60rem;
-  margin-bottom: 2rem;
-}
-.not-found-countainer h3,
-.not-found-countainer p,
-.not-found-countainer Link {
-  margin-bottom: 2rem;
-}
 
 @media (max-width: 76,8rem) {
   body,

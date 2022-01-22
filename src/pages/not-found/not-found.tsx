@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import AnimatedPage from "../../motion/animate-page";
+import "./not-found.css";
 
 const NotFound = () => {
+  useEffect(() => {
+    document.title = "404 Error";
+    return () => {
+      document.title = "";
+    };
+  }, []);
   return (
     <AnimatedPage>
       <div className="not-found-countainer">

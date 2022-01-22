@@ -2,8 +2,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
 import { Game, Login, Signup, LandingPage, NotFound } from "./pages";
-import { UnProtectedRoute } from "./helpers/unprotected-route";
-import { ProtectedRoute } from "./helpers/protected-route";
+import { UnProtectedRoute } from "./routeProtection/unprotected-route";
+import { ProtectedRoute } from "./routeProtection/protected-route";
 import { Navbar } from "./components";
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="content">
+      <main className="content">
         <AnimatePresence exitBeforeEnter>
           <Routes key={location.pathname} location={location}>
             <Route path="/" element={<LandingPage />} />
@@ -28,7 +28,7 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
-      </div>
+      </main>
     </>
   );
 };

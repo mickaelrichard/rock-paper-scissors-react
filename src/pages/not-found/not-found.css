@@ -1,0 +1,31 @@
+.not-found-countainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-found-image {
+  width: 60rem;
+  margin-bottom: 2rem;
+  margin-top: 8rem;
+}
+.not-found-countainer h3,
+.not-found-countainer p,
+.not-found-countainer Link {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .not-found-image {
+    width: 30rem;
+    margin-bottom: 2rem;
+    margin-top: 10rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 980px) {
+  .not-found-image {
+    width: 40rem;
+    margin-bottom: 2rem;
+    margin-top: 8rem;
+  }
+}

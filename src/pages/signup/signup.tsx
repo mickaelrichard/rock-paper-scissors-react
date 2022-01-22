@@ -19,6 +19,9 @@ export default function SignUp() {
 
   useEffect(() => {
     document.title = "Signup";
+    return () => {
+      document.title = "";
+    };
   }, []);
 
   const registerHandler = async (e: React.FormEvent) => {
