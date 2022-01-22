@@ -103,6 +103,28 @@ const navVariants = {
     },
   },
 };
+
+//use in play
+const playerVariants = {
+  animate: {
+    translateY: [0, -50, 0, -50, 0, -50, 0, -50, 0],
+    rotateY: [180, 180, 180, 180, 180, 180, 180, 180, 180],
+
+    transition: {
+      type: "spring",
+      duration: 2,
+    },
+  },
+};
+const computerVariants = {
+  animate: {
+    translateY: [0, -50, 0, -50, 0, -50, 0, -50, 0],
+    transition: {
+      type: "spring",
+      duration: 2,
+    },
+  },
+};
 export {
   landingVariants,
   hoverVariants,
@@ -112,4 +134,6 @@ export {
   modalBackdrop,
   modal,
   navVariants,
+  playerVariants,
+  computerVariants,
 };

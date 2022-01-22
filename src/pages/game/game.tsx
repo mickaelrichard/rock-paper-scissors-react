@@ -28,7 +28,7 @@ const Game = () => {
       >
         <LeaderBoard />
         <motion.div variants={gameChildVariants}>
-          <Play anim={anim} setAnim={setAnim} />
+          <Play setAnim={setAnim} />
         </motion.div>
         <motion.div variants={gameChildVariants}>
           <Pick anim={anim} />

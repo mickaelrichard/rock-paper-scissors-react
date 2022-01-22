@@ -26,7 +26,7 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .landing-btn {
     padding: 1.3rem;
     font-size: 5rem;

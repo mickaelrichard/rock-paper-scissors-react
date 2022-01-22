@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useContext, useMemo } from "react";
+import React, { useContext, useEffect } from "react";
 import { leaderBoardButtonVariants } from "../../motion/variants";
 import { GameContext } from "../../context/game";
 import { UserContext } from "../../context/auth";
@@ -9,11 +9,11 @@ const LeaderBoard = () => {
   const { playerScore, computerScore, resetScore } = useContext(GameContext);
   const { user } = useContext(UserContext);
 
-  useMemo(() => {
+  useEffect(() => {
     localStorage.setItem("playerScore", playerScore.toString());
     localStorage.setItem("computerScore", computerScore.toString());
   }, [playerScore, computerScore]);
-  console.log("leader");
+
   return (
     <div className="leaderBoard-container">
       <motion.div

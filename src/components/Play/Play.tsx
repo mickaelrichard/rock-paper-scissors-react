@@ -1,28 +1,31 @@
 import { useEffect, useRef, useContext, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { playerVariants, computerVariants } from "../../motion/variants";
 import { GameContext } from "../../context/game";
 import { IProps } from "./interface";
 import "./play.css";
 
-const Play: React.FC<IProps> = ({ anim, setAnim }) => {
+const Play: React.FC<IProps> = ({ setAnim }) => {
   const [uiPlayerHand, setUiPlayerHand] = useState<string | null>("rock");
   const [uiComputerHand, setUiComputerHand] = useState<string | null>("rock");
   const { rounds, playerChoice, getResults, computer } = useContext(
     GameContext
   );
   const firstUpdate = useRef<boolean>(true);
+  const controls = useAnimation();
 
   const result = (): void => {
-    if (playerChoice === "rock" && computer === "scissors") {
+    if (
+      (playerChoice === "rock" && computer === "scissors") ||
+      (playerChoice === "scissors" && computer === "paper") ||
+      (playerChoice === "paper" && computer === "rock")
+    ) {
       getResults("win", 1);
-    } else if (playerChoice === "rock" && computer === "paper") {
-      getResults("lose", 1);
-    } else if (playerChoice === "scissors" && computer === "paper") {
-      getResults("win", 1);
-    } else if (playerChoice === "scissors" && computer === "rock") {
-      getResults("lose", 1);
-    } else if (playerChoice === "paper" && computer === "rock") {
-      getResults("win", 1);
-    } else if (playerChoice === "paper" && computer === "scissors") {
+    } else if (
+      (playerChoice === "rock" && computer === "paper") ||
+      (playerChoice === "scissors" && computer === "rock") ||
+      (playerChoice === "paper" && computer === "scissors")
+    ) {
       getResults("lose", 1);
     } else {
       getResults("draw", 0);
@@ -30,44 +33,46 @@ const Play: React.FC<IProps> = ({ anim, setAnim }) => {
   };
 
   useEffect(() => {
+    //allow result() to not run at first render
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
     }
-    setAnim(true);
+    setAnim(true); //trigger disabled pick in Pick.ts
+    controls.start("animate"); //start animation
     const cleanup = setTimeout(() => {
+      //do when animation finish
       result();
       setAnim(false);
       setUiComputerHand(computer);
       setUiPlayerHand(playerChoice);
-    }, 1700);
+    }, 2000);
+
     return () => {
       clearTimeout(cleanup);
     };
   }, [rounds]);
 
-  const classNames = [];
-  if (anim) {
-    classNames.push("shakeP", "play-player-hand");
-  } else {
-    classNames.push("play-player-hand");
-  }
-  console.log("play");
   return (
-    <div>
+    <>
       <div className="play-hands">
-        <img
-          alt="hand"
-          className={classNames.join(" ")}
-          src={playerChoice ? `./${uiPlayerHand}-b.png` : `./rock-b.png`}
-        />
-        <img
-          alt="hand"
-          src={computer ? `./${uiComputerHand}.png` : `./rock.png`}
-          className={anim ? "shakeC" : ""}
-        />
+        <>
+          <motion.img
+            animate={controls}
+            variants={playerVariants}
+            alt="hand"
+            className="play-player-hand"
+            src={playerChoice ? `./${uiPlayerHand}-b.png` : `./rock-b.png`}
+          />
+          <motion.img
+            animate={controls}
+            variants={computerVariants}
+            alt="hand"
+            src={computer ? `./${uiComputerHand}.png` : `./rock.png`}
+          />
+        </>
       </div>
-    </div>
+    </>
   );
 };
 

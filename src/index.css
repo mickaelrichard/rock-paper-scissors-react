@@ -35,6 +35,10 @@ ul {
   list-style-type: none;
 }
 
+.error {
+  color: var(--warning);
+  margin-bottom: 0.6rem;
+}
 /* layout */
 .content {
   margin: 0 auto;
@@ -67,9 +71,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* forms */
 form {
   max-width: 50rem;
-  margin: 0 auto;
+  margin: 10rem auto 0;
   padding: 4rem;
   border-radius: 0.8rem;
   box-shadow: var(--light-shadow);
@@ -86,6 +91,7 @@ input {
   font-size: 1.4rem;
 }
 
+/* loader */
 .loader-container {
   height: 100vh;
   display: flex;
@@ -102,6 +108,7 @@ input {
   margin-top: 10rem;
 }
 
+/* global media quries  */
 @media (max-width: 76,8rem) {
   body,
   p,

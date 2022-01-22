@@ -14,7 +14,7 @@ const NotFound = () => {
   return (
     <AnimatedPage>
       <div className="not-found-countainer">
-        <div>
+        <>
           <img
             src={"/not-found.svg"}
             alt="not found"
@@ -30,7 +30,7 @@ const NotFound = () => {
               back home
             </Link>
           </motion.div>
-        </div>
+        </>
       </div>
     </AnimatedPage>
   );

@@ -13,7 +13,8 @@ export default function Login() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const isInvalid = email === "" || password === "";
+  const isInvalid =
+    (email === "" && !email.includes("@" && ".")) || password.length < 5;
 
   useEffect(() => {
     document.title = "Login";
@@ -65,7 +66,7 @@ export default function Login() {
 
   return (
     <AnimatedPage>
-      <form>
+      <form onSubmit={loginHandler}>
         <h2>Login</h2>
         <input
           type="email"
@@ -85,7 +86,6 @@ export default function Login() {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 1000 }}
           disabled={loading || isInvalid}
-          onClick={loginHandler}
         >
           Login
         </motion.button>

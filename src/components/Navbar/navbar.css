@@ -43,7 +43,7 @@ nav .navbar-links span {
     margin-right: 4rem;
   }
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   nav {
     max-width: 50rem;
   }

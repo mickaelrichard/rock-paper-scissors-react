@@ -24,7 +24,7 @@ const Modal: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
               A computer can potentially cheat by detecting repeated patterns
               while analysing your previous picks. However, in our app, we make
               sure the computer doesnt have access to your historic of choices
-              because we use an eternal server to emullate the computer choice.
+              because we use an eternal server to emulate the computer choice.
               So the computer cannot cheat! :)
             </p>
             <motion.button

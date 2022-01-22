@@ -15,7 +15,12 @@ export default function SignUp() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const isInvalid = password === "" || email === "" || password === "";
+  const isInvalid =
+    username.length < 3 ||
+    username.length > 20 ||
+    (email === "" && !email.includes("@" && ".")) ||
+    password.length < 5 ||
+    confirmPassword.length < 5;
 
   useEffect(() => {
     document.title = "Signup";
@@ -77,7 +82,7 @@ export default function SignUp() {
 
   return (
     <AnimatedPage>
-      <form>
+      <form onSubmit={registerHandler}>
         <h2>Sign up</h2>
         <input
           type="text"
@@ -108,7 +113,6 @@ export default function SignUp() {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 1000 }}
           disabled={loading || isInvalid}
-          onClick={registerHandler}
         >
           Sign up
         </motion.button>
