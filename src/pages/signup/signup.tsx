@@ -43,7 +43,7 @@ export default function SignUp() {
 
     try {
       const { data: response } = await axios.post(
-        "https://rock-paper-scissors-job-api.herokuapp.com/",
+        "https://rock-paper-scissors-job-api.herokuapp.com/api/v1/auth/signup",
         {
           username,
           email,

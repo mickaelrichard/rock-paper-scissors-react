@@ -29,7 +29,7 @@ export default function Login() {
 
     try {
       const { data: response } = await axios.post(
-        "https://rock-paper-scissors-job-api.herokuapp.com/",
+        "https://rock-paper-scissors-job-api.herokuapp.com/api/v1/auth/login",
         {
           email,
           password,

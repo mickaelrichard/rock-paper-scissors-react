@@ -49,7 +49,7 @@ const GameProvider = ({ children }: any) => {
   };
 
   const fetchComputer = () => {
-    axios.get("https://random-rock-paper.herokuapp.com/").then((res) => {
+    axios.get("https://random-pick-api.herokuapp.com/").then((res) => {
       setComputer(res.data.data.computer);
       setRounds((r: number) => r + 1);
     });
