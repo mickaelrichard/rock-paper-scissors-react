@@ -14,7 +14,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const isInvalid =
-    (email === "" && !email.includes("@" && ".")) || password.length < 5;
+    (email === "" && !email.includes("@" && ".")) || password === "";
 
   useEffect(() => {
     document.title = "Login";
@@ -29,7 +29,7 @@ export default function Login() {
 
     try {
       const { data: response } = await axios.post(
-        "http://localhost:8080/api/v1/auth/login",
+        "https://rock-paper-scissors-job-api.herokuapp.com/",
         {
           email,
           password,

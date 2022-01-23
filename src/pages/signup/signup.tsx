@@ -16,11 +16,10 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const isInvalid =
-    username.length < 3 ||
-    username.length > 20 ||
+    username === "" ||
     (email === "" && !email.includes("@" && ".")) ||
-    password.length < 5 ||
-    confirmPassword.length < 5;
+    password === "" ||
+    confirmPassword === "";
 
   useEffect(() => {
     document.title = "Signup";
@@ -44,7 +43,7 @@ export default function SignUp() {
 
     try {
       const { data: response } = await axios.post(
-        "http://localhost:8080/api/v1/auth/signup",
+        "https://rock-paper-scissors-job-api.herokuapp.com/",
         {
           username,
           email,
