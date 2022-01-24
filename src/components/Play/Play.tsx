@@ -8,7 +8,7 @@ import "./play.css";
 const Play: React.FC<IProps> = ({ setAnim }) => {
   const [uiPlayerHand, setUiPlayerHand] = useState<string | null>("rock");
   const [uiComputerHand, setUiComputerHand] = useState<string | null>("rock");
-  const { rounds, playerChoice, getResults, computer } = useContext(
+  const { rounds, playerChoice, getResults, computerChoice } = useContext(
     GameContext
   );
   const firstUpdate = useRef<boolean>(true);
@@ -16,15 +16,15 @@ const Play: React.FC<IProps> = ({ setAnim }) => {
 
   const result = (): void => {
     if (
-      (playerChoice === "rock" && computer === "scissors") ||
-      (playerChoice === "scissors" && computer === "paper") ||
-      (playerChoice === "paper" && computer === "rock")
+      (playerChoice === "rock" && computerChoice === "scissors") ||
+      (playerChoice === "scissors" && computerChoice === "paper") ||
+      (playerChoice === "paper" && computerChoice === "rock")
     ) {
       getResults("win", 1);
     } else if (
-      (playerChoice === "rock" && computer === "paper") ||
-      (playerChoice === "scissors" && computer === "rock") ||
-      (playerChoice === "paper" && computer === "scissors")
+      (playerChoice === "rock" && computerChoice === "paper") ||
+      (playerChoice === "scissors" && computerChoice === "rock") ||
+      (playerChoice === "paper" && computerChoice === "scissors")
     ) {
       getResults("lose", 1);
     } else {
@@ -44,7 +44,7 @@ const Play: React.FC<IProps> = ({ setAnim }) => {
       //do when animation finish
       result();
       setAnim(false);
-      setUiComputerHand(computer);
+      setUiComputerHand(computerChoice);
       setUiPlayerHand(playerChoice);
     }, 2000);
 
@@ -68,7 +68,7 @@ const Play: React.FC<IProps> = ({ setAnim }) => {
             animate={controls}
             variants={computerVariants}
             alt="hand"
-            src={computer ? `./${uiComputerHand}.png` : `./rock.png`}
+            src={computerChoice ? `./${uiComputerHand}.png` : `./rock.png`}
           />
         </>
       </div>

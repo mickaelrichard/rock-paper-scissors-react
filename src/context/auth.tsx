@@ -6,7 +6,6 @@ import { GameContext } from "./game";
 const UserContext = createContext<IAuth>({
   user: { data: null, loading: true, error: null },
   setUser: () => {},
-  test: () => {},
 });
 
 const UserProvider = ({ children }: any) => {
@@ -70,14 +69,9 @@ const UserProvider = ({ children }: any) => {
     }
   }, []);
 
-  const test = () => {
-    console.log("test");
-  };
-
   const contextValue: IAuth = {
     user,
     setUser,
-    test,
   };
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>

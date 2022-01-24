@@ -3,8 +3,7 @@ import axios from "axios";
 import { IGame } from "./interfaces";
 
 const GameContext = createContext<IGame>({
-  computer: "",
-  userWin: "",
+  computerChoice: "",
   rounds: 0,
   playerChoice: "",
   playerScore: 0,
@@ -16,15 +15,15 @@ const GameContext = createContext<IGame>({
 });
 
 const GameProvider = ({ children }: any) => {
-  const [computer, setComputer] = useState<IGame["computer"]>("");
-  const [userWin, setUserWin] = useState<IGame["userWin"]>("");
+  const [computerChoice, setComputerChoice] = useState<IGame["computerChoice"]>(
+    ""
+  );
   const [rounds, setRounds] = useState<IGame["rounds"]>(0);
   const [playerChoice, setPlayerChoice] = useState<IGame["playerChoice"]>("");
   const [playerScore, setPlayerScore] = useState<IGame["playerScore"]>(0);
   const [computerScore, setComputerScore] = useState<IGame["computerScore"]>(0);
 
   function getResults(result: string, score: number) {
-    setUserWin(result);
     if (result === "win") {
       setPlayerScore((s) => s + score);
     } else if (result === "lose") {
@@ -50,13 +49,12 @@ const GameProvider = ({ children }: any) => {
 
   const fetchComputer = () => {
     axios.get("https://random-pick-api.herokuapp.com/").then((res) => {
-      setComputer(res.data.data.computer);
+      setComputerChoice(res.data.data.computer);
       setRounds((r: number) => r + 1);
     });
   };
 
   const submitChoice = (event: React.ChangeEvent<any>) => {
-    //maybe wrong type?
     setPlayerChoice(event.target.dataset.id);
     fetchComputer();
   };
@@ -67,8 +65,7 @@ const GameProvider = ({ children }: any) => {
   };
 
   const contextValue: IGame = {
-    computer,
-    userWin,
+    computerChoice,
     rounds,
     submitChoice,
     playerChoice,

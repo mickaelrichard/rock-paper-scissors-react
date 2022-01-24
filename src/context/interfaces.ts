@@ -1,6 +1,5 @@
 export interface IGame {
-  computer: string | null;
-  userWin: string | null;
+  computerChoice: string | null;
   rounds: number;
   playerChoice: string;
   playerScore: number;
@@ -22,5 +21,4 @@ export interface IAuth {
     loading: boolean;
   };
   setUser: React.Dispatch<React.SetStateAction<IAuth["user"]>>;
-  test(): void;
 }

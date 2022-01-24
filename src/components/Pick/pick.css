@@ -21,7 +21,7 @@
   width: 10rem;
   cursor: pointer;
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 768) {
   .pick-icon img {
     width: 8rem;
   }
@@ -30,5 +30,19 @@
 @media screen and (min-width: 768px) and (max-width: 980px) {
   .pick-items {
     margin-top: -3rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .pick-icon {
+    max-width: 6rem;
+    margin: 0 2rem;
+  }
+  .pick-icon {
+    width: 100%;
+  }
+
+  .pick-items {
+    justify-content: space-between;
   }
 }

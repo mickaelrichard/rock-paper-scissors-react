@@ -35,9 +35,9 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .leaderBoard-container {
-    width: 40rem;
+    max-width: 40rem;
     padding: 2rem;
     margin-top: 2rem;
   }
@@ -61,5 +61,25 @@
     top: 14rem;
     cursor: pointer;
     border: 0.15em solid var(--primary);
+  }
+}
+@media screen and (max-width: 576px) {
+  .leaderBoard-container {
+    width: 35rem;
+    padding: 1rem 1.2rem;
+    margin-top: 2rem;
+  }
+  .leaderBoard-reset {
+    padding: 1rem 1.2rem;
+    color: white;
+    position: absolute;
+    right: 11.5rem;
+    top: 8.5rem;
+    cursor: pointer;
+    border: 0.15em solid var(--primary);
+    margin-top: 1rem;
+  }
+  .leaderBoard-title {
+    font-size: 1.8rem;
   }
 }
